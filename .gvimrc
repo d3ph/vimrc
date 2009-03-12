@@ -569,3 +569,30 @@ endfunction
 " nmap <F12> <Esc>:BufExplorer<CR>
 " vmap <F12> <Esc>:BufExplorer<CR>
 " imap <F12> <Esc><esc>:BufExplorer<CR>
+"
+" must tu test
+" autocmd BufWritePre * :call <SID>StripWhite()
+" fun! <SID>StripWhite()
+    " %s/[ \t]\+$//ge
+    " %s!^\( \+\)\t!\=StrRepeat("\t", 1 + strlen(submatch(1)) / 8)!ge
+" endfun
+
+" match Todo /\s\+$/
+
+" :set wildignore=*.o, *~, *.pyc
+
+" ~/.vim/plugin/gitignore.vim
+" let filename = '.gitignore'
+" if filereadable(filename)
+    " let igstring = ''
+    " for oline in readfile(filename)
+        " let line = substitute(oline, '\s|\n|\r', '', "g")
+        " if line =~ '^#' | con | endif
+        " if line == '' | con  | endif
+        " if line =~ '^!' | con  | endif
+        " if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+        " let igstring .= "," . line
+    " endfor
+    " let execstring = "set wildignore=".substitute(igstring, '^,', '', "g")
+    " execute execstring
+" endif	
