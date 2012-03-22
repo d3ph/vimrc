@@ -97,24 +97,6 @@ set stl=%<%f%h%m%r\ %b\ %{&encoding}\ (%{&ff})\ 0x%B\ \ %l,%c%V\ %P\ [%p%%] "sta
 set ls=2 "laststatus
 
 
-" Complete
-" ^X + Y line complete !!!yatta!!!
-set cpt=
-set cpt-=i " cur & include file
-set cpt+=. " the current buffer
-set cpt+=k " :set dictionary
-set cpt+=w " other windows
-set cpt+=b " in loaded buflist
-set cpt+=u " unloaded buflist
-set cpt+=t " same as "]" tag complete
-"completeopt default "menu,preview"
-set cot-=preview " no insert preview in line
-set cot-=menuone " onmatch, useful e.g., what file it comes from
-set cot+=longest " ^L to add more characters
-" ^X + ^U
-"set cfu "completefunc
-set cpo-=< "cpoptions
-
 " In cmdmode press 'wc' + show matches
 set wmnu "wildmenu
 " Cool tab completion stuff
@@ -179,6 +161,24 @@ set stal=2 "showtabline
 " Say no for yes/menu use :simalt
 set wak=no "winaltkeys
 
+" Complete
+" ^X + Y line complete !!!yatta!!!
+set cpt=
+set cpt-=i " cur & include file
+set cpt+=. " the current buffer
+set cpt+=k " :set dictionary
+set cpt+=w " other windows
+set cpt+=b " in loaded buflist
+set cpt+=u " unloaded buflist
+set cpt+=t " same as "]" tag complete
+"completeopt default "menu,preview"
+set cot-=preview " no insert preview in line
+set cot-=menuone " onmatch, useful e.g., what file it comes from
+set cot+=longest " ^L to add more characters
+" ^X + ^U
+"set cfu "completefunc
+set cpo-=< "cpoptions
+
 "-u || --noplugin
 "set rtp "runtimepath
 "set lpl "loadplugins
@@ -230,9 +230,6 @@ noremap <M-8> 8gt
 noremap <M-9> 9gt
 noremap <M-0> 10gt
 
-"TODO find useful bind 4 this cool replace word under cursor
-"nmap ~ :%s/\<<c-r>=expand("<cword>")<cr>\>/
-
 " unbindall "it word to me 4 remaind my tries on map not mapt
 "z,
 "z/
@@ -251,6 +248,7 @@ map <Leader>\ <Esc>:nohls<CR>
 " Highlight every other line
 map <Leader><Tab> :set hls<CR>/\n.*\n/<CR>
 
+"{{{ Block across terms
 " This is for working across multiple xterms and/or gvims
 " Transfer/read and write one block of text between vim sessions (capture whole line):
 " Write
@@ -267,6 +265,9 @@ map <silent> <Left> h
 map <silent> <Right> l
 map <silent> <Up> k
 map <silent> <Down> j
+
+"TODO find useful bind 4 this cool replace word under cursor
+"nmap ~ :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 " Good call Benjie (r for i)
 " XXX:
