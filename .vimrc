@@ -1,4 +1,4 @@
-set nocompatible
+set nocompatible "nocp
 "
 " TODO:
 " ack-grep 'sub\s+get_child_props' nms/trunk/
@@ -14,6 +14,7 @@ set nocompatible
 "perldoc perldsc
 "perldoc perlreftut
 "http://stackoverflow.com/questions/4974539/vim-plugin-to-show-current-perl-subroutine
+"
 syntax on
 set background=dark
 filetype plugin indent on
@@ -26,13 +27,15 @@ if has("gui_running")
     "inkpot
 else
     colo metacosm
-set bg=dark
+endif
+
+set background=dark "bg
 set guifont=Monaco\ 10
 "set guioptions=aegimrLtT
 set guioptions=aegirL
 
 " :h backspace?
-set bs=indent,eol,start "backspace
+set backspace=indent,eol,start "bs
 "whichwrap+=<,>,[,] " you must forget <- ->
 
 " When I close a tab, remove the buffer || no unload buffer
@@ -44,12 +47,11 @@ set nohid "nohidden
 set mouse=
 "set mousem=popup
 
-set noai "autoindent
-"set ci "cindent
-set smartindent
-" Say no for yes/menu use :simalt
-set wak=no "winaltkeys
+set noautoindent "noai
+"set cindent "ci
+set smartindent "si
 
+"cpt " ^X + Y line complete !!!yatta!!!
 set complete=
 "set complete-=i " cur & include file
 set complete+=. " the current buffer
@@ -61,51 +63,77 @@ set complete+=t " same as "]" tag complete
 set completeopt-=preview " no insert preview in line
 set completeopt-=menuone " onmatch, useful e.g., what file it comes from
 set completeopt+=longest " ^L to add more characters
-"set completeopt-=< "cpoptions
+"set completeopt-=<   "cpo
+"set completefunc     "cfu
 
-set ignorecase
-set smartcase
+"formatoptions
+set fo=
+set fo+=c " autowrap coments use 'tw' 
+set fo+=r " insert comment leader on <Enter>
+set fo+=o " insert comment leader on 'o'/'O'
+set fo+=q " allow gq
+set fo+=l " Long lines not broken in insmod
+set fo-=t " autowrap by 'tw' m/b - it and use only gq
+set fo-=1 " one-latter word not brake
 
-set incsearch
-set hlsearch
+set ignorecase "ic " Ignoring case is a fun trick
+set smartcase "scs " Override ic only for /, ?, n, N
+
+set incsearch "is " Incremental search by typing
+set hlsearch "hls " Highlight things that we find with the search
 " nohlsearch binding
 " map <F5> :noh<CR>
 
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smarttab
+set expandtab "et " Tabs modificated to space
+set tabstop=4 "ts
+set shiftwidth=4 "sw
+set softtabstop=4 "sts
+set smarttab "sta " <BS> remove <Tab>
 
-set showcmd
-set showmode
-set showmatch
+set showcmd       "sc Shows what you are typing as a command.
+set showmode      
+set showmatch     "sm Shows bracket
 set splitbelow
 set splitright
 
-set foldcolumn=0 " fdc
-set foldmethod=indent
+set foldcolumn=0 "fdc
+set foldmethod=indent "fdm
+"set foldifnore=# "fdi
+"set foldclose=all "fcl
+" Help:
+" Create zf
+" Delete zd
+" zn none
+" zN Normal
+" zi invert
+
 
 set nolist
-set nonumber
-set ruler
-set cul " cursorline: highlight current line
+set nonumber        "non :#
+set ruler           "ru
+"set ruf "rulerformat=%15(%c%V\ %p%%%)
+set cursorline      "cul Highlight current line
 set visualbell t_vb=    " turn off error beep/flash
 set novisualbell    " turn off visual bell
 
 set linebreak       " linebreaks
-set wrap            " set wrap for lines
+set wrap            " set wrap for lines "TODO: use bind for wrap!
+set sidescroll=1    "ss
 set title           " show title in the console title bar
 set ttyfast         " smoother changes
-set wak=yes         " winaltkeys: menu
+set wak=yes         " winaltkeys: menu "TODO: no
 set nostartofline   " don't jump to first character when paging
 set t_Co=256        " set number of colors
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.DS_Store,*.db
-set wildmenu
+set wildignore=*.o,*~,*.obj,*.bak,*.exe,*.pyc,*.DS_Store,*.db
+set wildmenu        "wmnu " In cmdmode press 'wc' + show matches
+set wildchar=<Tab>  "wc
+set wildmode=list:longest,full "wim " Cool tab completion stuff
+"set wildcharm=<C-Z>"wcm
 
-"set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x%B\ \ %l,%c%V\ %P
+"set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ (%{&ff})\ 0x%B\ \ %l,%c%V\ %P\ [%p%%] "stl
+"set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x%B\ \ %l,%c%V\ %P " Highlight current line
 set statusline=%<%([%-n]%y[%{&encoding}]\ %f%h%m%r%)\ %=\ %(%b\ 0x%B\%)\ %(%l,%c%V\ %P%)
-set laststatus=2 " always
+set laststatus=2    "ls Show statusline always
 
 set history=5000
 set undolevels=5000
@@ -113,16 +141,31 @@ set undolevels=5000
 set encoding=utf8
 set termencoding=utf8
 set fileencoding=utf8
-set fileencodings=utf8,koi8r,cp1251
+set fileencodings=utf8 ",koi8r,cp1251
 
 "set grepprg=grep\ -n\ $*\ /dev/null
 set grepprg=grep\ -nH\ $*
 
 set nohidden " no unload buffer
 set notildeop
-set nowrapscan
+set nowrapscan "nows " search wrap around end file
 
 set dir=/tmp
+
+set spelllang=en "spl
+set nospell
+"set spellfile "for zg and zw zW zG zuW zuG
+"spellcheck... z=
+"set spellgood
+
+"set noguipty
+"set tw=78 "textwidth
+"set wrapmargin=0 "start wrapping
+"set fex "formatexpr
+"set fp "formatprg
+
+"set rtp "runtimepath
+"set lpl "loadplugins
 
 let g:showmarks_enable=0
 let python_highlight_all=1
@@ -161,12 +204,24 @@ else
 endif
 endfunction
 
+" DOS is for fools.
+" nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>
+
 " Open the Project Plugin <F10>
 nnoremap <silent> <F10> :Project<CR>
 
-set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
-set noguipty
+" F11 - Gnome Fullscreen
 
+" Paste Mode!  Dang! <F12>
+" nnoremap <silent> <F12> :call Paste_on_off()<CR>
+" set pastetoggle=<F12>
+
+set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+
+
+" Plugins maps
+" closetag <C-_>
+" Project \C (\c no recurse) start wizard (name, path, cd, filter:*)
 
 if has("autocmd")
   au FileType djangohtml,html,xhtml,xml source ~/.vim/macros/closetag.vim
@@ -209,12 +264,15 @@ map <silent> <Right> l
 map <silent> <Up> k
 map <silent> <Down> j
 
+" save session :ss
+
 au VimEnter * set winheight=999
 
 let mapleader = "\\"
-" nmap <leader>\ :nohl<CR>
+" nmap <leader>\ :noh<CR>
 " nmap <leader>\ :invhlsearch<CR>
 
+" FIXME: <F5> already rotate it
 map <Leader>\ <Esc>:nohls<CR>
 
 " Highlight every other line
@@ -237,7 +295,7 @@ map <Leader>H :call HTMLDecode()<CR>
 let mapleader = ","
 " use the same symbols as TextMate for tabstops and EOLs
 "set listchars=tab:▸\ ,eol:¬
-set listchars=tab:▸\ ,eol:¬,trail:\ ,precedes:<,extends:>
+set listchars=tab:▸\ ,eol:¬,trail:\ ,precedes:<,extends:> "lcs
 
 " nmap <leader>, :set list!<CR>
 nmap <leader>, :call ToggleColumn()<CR>
@@ -261,7 +319,7 @@ vnoremap <silent> j gj
 " Awesome remap jj to escape in insert mode.
 inoremap jj <Esc>
 "XXX: must testit
-nnoremap JJJJ <Nop> 
+nnoremap JJJJ <Nop>
 "tab indexes
 noremap <M-1> 1gt
 noremap <M-2> 2gt
@@ -282,6 +340,7 @@ imap <C-enter> <Esc>i
 
 " TODO Mode
 " nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
+" match Todo /\s\+$/
 
 " Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
@@ -300,6 +359,7 @@ endfunction
 
 autocmd BufWinEnter * call AwesomeHL()
 
+set tildeop "top " When on: ~ like operator (dd, yy, cc)
 nmap ~ :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
 
@@ -330,10 +390,15 @@ au BufReadPost *
     \   exe "normal g`\"" |
     \ endif
 
+" :cn
+" :copen
+" :make
+" comp! gcc "compiler
 au FileType perl call PerlMode()
 function! PerlMode()             " Stolen from David Hand
   " set makeprg=perl\ -I/mnt/ncp105/nmsrc/nms/trunk\ -I/mnt/ncp105/nmsrc/nmc/trunk\ -cWT\ %\ $*
   set makeprg=perl\ -I/mnt/ncp105/nmsrc/nms/trunk\ -I/mnt/ncp105/nmsrc/nmc/trunk\ -c\ %\ $*
+  " efm
   " set errorformat=%f:%l:%m
   set errorformat=%m\ at\ %f\ line\ %l%.%#,%-G%.%#
   set autowrite               " write buf every time :make
@@ -495,6 +560,6 @@ endfunction
 " endif
 "}}}
 
-SnippetEmu
-let g:snippetsEmu_key = "<Tab>"
+"SnippetEmu
+"let g:snippetsEmu_key = "<Tab>"
 
