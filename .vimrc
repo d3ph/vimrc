@@ -26,7 +26,7 @@ if has("gui_running")
     "desert
     "inkpot
 else
-    colo metacosm
+    colo zenburn
 endif
 
 set background=dark "bg
