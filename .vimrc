@@ -15,8 +15,9 @@ set nocompatible "nocp
 "perldoc perlreftut
 "http://stackoverflow.com/questions/4974539/vim-plugin-to-show-current-perl-subroutine
 "
+filetype off
+execute pathogen#infect()
 syntax on
-set background=dark
 filetype plugin indent on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
@@ -26,7 +27,8 @@ if has("gui_running")
     "desert
     "inkpot
 else
-    colo zenburn
+    colo wombat256
+    "colo zenburn
 endif
 
 set background=dark "bg
@@ -562,4 +564,10 @@ endfunction
 
 "SnippetEmu
 "let g:snippetsEmu_key = "<Tab>"
+function! UpdatePathogen()
+  execute "!curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"
+endfunction
 
+let g:solarized_termcolors=256
+ab ipython import IPython;IPython.embed()<esc>
+ab pudb import pudb;pudb.set_trace()<esc>
