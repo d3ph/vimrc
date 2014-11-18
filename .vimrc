@@ -569,5 +569,5 @@ function! UpdatePathogen()
 endfunction
 
 let g:solarized_termcolors=256
-ab ipython import IPython;IPython.embed()<esc>
-ab pudb import pudb;pudb.set_trace()<esc>
+:autocmd FileType python :iabbrev <buffer> ipython import IPython;IPython.embed()<esc>
+:autocmd FileType python :iabbrev <buffer> pudb import pudb;pudb.set_trace()<esc>
