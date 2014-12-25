@@ -16,7 +16,7 @@ set nocompatible "nocp
 "http://stackoverflow.com/questions/4974539/vim-plugin-to-show-current-perl-subroutine
 "
 filetype off
-execute pathogen#infect()
+call pathogen#infect()
 syntax on
 filetype plugin indent on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -229,7 +229,7 @@ if has("autocmd")
   au FileType djangohtml,html,xhtml,xml source ~/.vim/macros/closetag.vim
 
   " code completion
-  au FileType python setlocal omnifunc=pythoncomplete#Complete
+  " au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   au FileType html setlocal omnifunc=htmlcomplete#CompleteTags
   au FileType css setlocal omnifunc=csscomplete#CompleteCSS
