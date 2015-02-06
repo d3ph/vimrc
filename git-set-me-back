@@ -1,4 +1,5 @@
 #!/bin/bash
-
-git config user.name $(git log --pretty=format:"%an" -1)
-git config user.email $(git log --pretty=format:"%ae" -1)
+USER_NAME=$(git log --pretty=format:"%an" -1)
+USER_EMAIL=$(git log --pretty=format:"%ae" -1)
+git config user.name "$USER_NAME"
+git config user.email "$USER_EMAIL"

@@ -1,0 +1,1 @@
+alias ack='ack-grep --ignore-dir `basename $VIRTUAL_ENV` --ignore-dir build'

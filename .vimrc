@@ -17,18 +17,27 @@ set nocompatible "nocp
 "
 filetype off
 call pathogen#infect()
-syntax on
+call pathogen#helptags()
 filetype plugin indent on
+syntax on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWritePost *.py call Flake8()
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:flake8_ignore='E501'
 
 "colorscheme
 if has("gui_running")
     colo wombat
-    "desert
-    "inkpot
+    " colo desert
+    " colo inkpot
 else
     colo wombat256
-    "colo zenburn
+    " colo zenburn
+    " colo vividchalk
+    " colo distinguished
+    " colo candy
 endif
 
 set background=dark "bg
@@ -134,7 +143,7 @@ set wildmode=list:longest,full "wim " Cool tab completion stuff
 
 "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ (%{&ff})\ 0x%B\ \ %l,%c%V\ %P\ [%p%%] "stl
 "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x%B\ \ %l,%c%V\ %P " Highlight current line
-set statusline=%<%([%-n]%y[%{&encoding}]\ %f%h%m%r%)\ %=\ %(%b\ 0x%B\%)\ %(%l,%c%V\ %P%)
+set statusline=%<%([%-n]%y[%{&encoding}]\ %f%h%m%r%)\ %=\ %(%b\ 0x%B\%)\ %(%l,%c%V\ %P%)\ %{fugitive#statusline()}
 set laststatus=2    "ls Show statusline always
 
 set history=5000
@@ -170,9 +179,9 @@ set nospell
 "set lpl "loadplugins
 
 let g:showmarks_enable=0
-let python_highlight_all=1
-let python_highlight_indent_errors=0
-let python_highlight_space_errors=0
+let g:python_highlight_all=1
+"let python_highlight_indent_errors=0
+"let python_highlight_space_errors=0
 
 " shortcut to rapidly toggle `set list`
 map <F2> :marks<CR>
@@ -191,19 +200,18 @@ map <F4> :TlistToggle<CR>
 
 "set invhlsearch <F5>
 let g:toggle_hls_flag=0
-nmap <F5> :call ToggleNoHl()<CR>:noh<CR>
 function! ToggleNoHl()
-perl << EOF
-  # my ($success, $val) = VIM::Eval('g:toggle_hls_flag');
-  # VIM::Msg("suc:$success, val:$val");
-EOF
 if g:toggle_hls_flag == 0
     let g:toggle_hls_flag=1
-    nmap <F5> :call ToggleNoHl()<CR>:set hls<CR>
+    nmap \\ <ESC>/<c-r>/<CR><c-o>:call ToggleNoHl()<CR>
 else
     let g:toggle_hls_flag=0
-    nmap <F5> :call ToggleNoHl()<CR>:noh<CR>
+    nmap \\ <ESC>:nohl<CR>:call ToggleNoHl()<CR>
 endif
+perl << EOF
+  my ($success, $val) = VIM::Eval('g:toggle_hls_flag');
+  VIM::Msg("toggle_hls_flag:$val");
+EOF
 endfunction
 
 " DOS is for fools.
@@ -274,25 +282,25 @@ let mapleader = "\\"
 " nmap <leader>\ :noh<CR>
 " nmap <leader>\ :invhlsearch<CR>
 
-" FIXME: <F5> already rotate it
-map <Leader>\ <Esc>:nohls<CR>
+" nnoremap <leader>\ <Esc>:nohl<CR>
+nmap <leader>\ <ESC>:nohl<CR>:call ToggleNoHl()<CR>
 
 " Highlight every other line
-map <Leader><Tab> :set hls<CR>/\n.*\n/<CR>
+map <leader><Tab> :set hls<CR>/\n.*\n/<CR>
 
 "{{{ Block across terms
 " This is for working across multiple xterms and/or gvims
 " Transfer/read and write one block of text between vim sessions (capture whole line):
 " Write
-nmap <Leader>w :. w! ~/.vimxfer<CR>
+nmap <leader>w :. w! ~/.vimxfer<CR>
 " Read
-nmap <Leader>r :r ~/.vimxfer<CR>
+nmap <leader>r :r ~/.vimxfer<CR>
 " Append 
-nmap <Leader>a :. w! >>~/.vimxfer<CR>
+nmap <leader>a :. w! >>~/.vimxfer<CR>
 "}}}
 
-map <Leader>h :call HTMLEncode()<CR>
-map <Leader>H :call HTMLDecode()<CR>
+map <leader>h :call HTMLEncode()<CR>
+map <leader>H :call HTMLDecode()<CR>
 
 let mapleader = ","
 " use the same symbols as TextMate for tabstops and EOLs
