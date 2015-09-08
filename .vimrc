@@ -15,6 +15,8 @@ set nocompatible "nocp
 "perldoc perlreftut
 "http://stackoverflow.com/questions/4974539/vim-plugin-to-show-current-perl-subroutine
 "
+" XXX: don't forget to install vim-nox
+"
 filetype off
 call pathogen#infect()
 call pathogen#helptags()

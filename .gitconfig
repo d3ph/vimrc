@@ -1,0 +1,15 @@
+[core]
+    autocrlf = false
+    safecrlf = true
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+    decorate = short
+[alias]
+    ci = commit
+    st = status
+    di = diff --color-words
+    in = !git fetch origin && git log ..FETCH_HEAD
+    out = !git fetch origin && git log FETCH_HEAD..

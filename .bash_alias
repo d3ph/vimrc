@@ -1,1 +1,2 @@
 alias ack='ack-grep --ignore-dir `basename $VIRTUAL_ENV` --ignore-dir build'
+TF_ALIAS=fuck alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
