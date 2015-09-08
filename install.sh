@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bashrc=~/.bashrc
-inject_bashrc="source ~/vimrc/$(basename $bashrc)" 
+inject_bashrc="source ~/vimrc/$(basename $bashrc)"
 
 test -f $bashrc && grep -q -F "$inject_bashrc" $bashrc || echo "$inject_bashrc" >> $bashrc
 
