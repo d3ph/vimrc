@@ -13,3 +13,7 @@
     di = diff --color-words
     in = !git fetch origin && git log ..FETCH_HEAD
     out = !git fetch origin && git log FETCH_HEAD..
+[mergetool "fugitive"]
+    cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
+[merge]
+    tool = fugitive
