@@ -44,7 +44,7 @@ m_pitch "0.022";
 m_yaw "0.022";
 m_rawinput "1";
 cl_idealpitchscale "0.8";
-sensitivity "0.6";
+sensitivity "0.57";
 zoom_sensitivity_ratio_mouse "1.2";
 
 //for localhost only
@@ -78,8 +78,16 @@ bind "KP_END" "slot1";
 bind "KP_DOWNARROW" "slot2";
 bind "KP_PGDN" "slot3";
 bind "KP_ENTER" "buy vest; buy vesthelm";
-bind "KP_DEL" "rebuy";
+bind "KP_DEL" "autobuy";
 bind "KP_INS" "buymenu";
+bind "Num Lock" "buy defuser";
+
+bind "ins" "buy taser";
+bind "del" "buy galilar; buy famas";
+bind "Home" "buy tec9; buy fiveseven";
+bind "End" "buy mac10; buy mp9";
+bind "pgup" "buy m4a1; buy ak47";
+bind "pgdn" "buy revolver; buy deagle";
 
 gameinstructor_enable "0";
 cl_showhelp "0";
