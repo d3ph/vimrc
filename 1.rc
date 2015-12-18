@@ -14,6 +14,21 @@ cl_crosshairthickness "1"; // Wide
 cl_crosshairusealpha "1";
 cl_fixedcrosshairgap "3"
 
+cl_hud_background_alpha "0.3";
+cl_hud_bomb_under_radar "1";
+cl_hud_color "0";
+cl_hud_healthammo_style "1"; // 0
+cl_hud_playercount_pos "1";
+cl_hud_playercount_showcount "1";
+cl_hud_radar_scale "1.3";
+
+cl_color "0";
+cl_radar_always_centered "1"; // 0
+cl_radar_icon_scale_min "0.6";
+cl_radar_rotate "1";
+cl_radar_scale "0.35";
+cl_radar_square_with_scoreboard "1";
+
 rate "80000";
 cl_interp "0";
 cl_interp_ratio "1";
