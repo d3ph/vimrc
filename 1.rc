@@ -117,7 +117,7 @@ bind "MWHEELDOWN" "+attack";
 bind "MOUSE1" "+attack";
 bind "MOUSE2" "+attack2";
 bindtoggle "MOUSE3" "cl_righthand";
-bindtoggle "MOUSE4" "voice_scale";
+bindtoggle "MOUSE4" "voice_scale"; // toggle_voice
 bindtoggle "MOUSE5" "cl_showloadout";
 bind "`" "toggleconsole"
 bind "1" "slot1";
