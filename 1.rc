@@ -48,7 +48,7 @@ cl_cmdrate "128";
 fps_max "300";
 
 voice_scale "0.5";
-voice_loopback "1";
+voice_loopback "0";
 windows_speaker_config "1";
 force_audio_english "1";
 dsp_enhance_stereo "1"; // ???: 0
@@ -137,7 +137,7 @@ bind "r" "+reload"
 bind "t" "use weapon_smokegrenade"; // <T>uman
 bind "y" "messagemode";
 bind "u" "messagemode2";
-bind "i" "show_loadout_toggle"
+bind "i" "voice_loopback 1"; // show_loadout_toggle
 bind "o" "exec 1.rc";
 bind "p" "cl_interp_ratio 2"; // try for Valve's 64 tick servers
 bind "a" "+moveleft";
@@ -177,7 +177,7 @@ bind "downarrow" "buy awp";
 bind "leftarrow" "buy nova";
 bind "rightarrow" "buy mag7";
 bind "backspace "buy p90";
-bind "/" "buy taser";
+bind "\" "buy taser";
 bind "ins" "buy bizon";
 bind "del" "buy m4a1; buy ak47";
 bind "Home" "buy mac10; buy mp9";
