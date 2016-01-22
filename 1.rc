@@ -51,10 +51,12 @@ voice_scale "0.5";
 voice_loopback "0";
 windows_speaker_config "1";
 force_audio_english "1";
-dsp_enhance_stereo "1"; // ???: 0
+dsp_enhance_stereo "0"; // try:1 (bad) default: 0
 dsp_slow_cpu "0";
 snd_headphone_pan_exponent "2"; // try: 1
 snd_headphone_pan_radial_weight "2"; // try: 1
+snd_surround_speaker_pan_exponent "2"; // default: 1.5
+snd_surround_speaker_pan_radial_weight "2"; // default: 0
 snd_front_headphone_position "45.0"; // default: 90
 snd_rear_headphone_position "135.0"; // default: 90
 snd_musicvolume "0";
@@ -147,7 +149,7 @@ bind "u" "messagemode2";
 bind "i" "voice_loopback 1"; // show_loadout_toggle
 bind "o" "exec 1.rc";
 bind "p" "cl_interp_ratio 2"; // try for Valve's 64 tick servers
-bind "[" "snd_headphone_pan_exponent 1;snd_headphone_pan_radial_weight 1";
+bind "[" "snd_headphone_pan_exponent 1.5;snd_headphone_pan_radial_weight 0";
 bind "]" "snd_front_headphone_position 90.0;snd_rear_headphone_position 90.0";
 bind "\" "snd_mixahead 0.1";
 bind "a" "+moveleft";
@@ -218,7 +220,7 @@ mm_dedicated_search_maxping "50";
 //cl_drawhud "0";
 //r_drawviewmodel "0";
 //r_drawothermodels "0";
-snd_restart
-weapon_debug_spread_show 0
-ui_reloadscheme
+snd_restart;
+weapon_debug_spread_show "0";
+ui_reloadscheme;
 //recoil - http://imgur.com/a/mzpuh/layout/horizontal#17
