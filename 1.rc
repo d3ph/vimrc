@@ -97,7 +97,7 @@ cl_bobamt_vert "0.1";
 cl_bobcycle "2";
 
 cl_showfps "1"
-net_graph "1";
+net_graph "0";
 net_graphheight "0";
 net_graphmsecs "400";
 net_graphpos "2";
@@ -107,15 +107,22 @@ net_graphshowlatency "1";
 net_graphsolid "1";
 net_graphtext "1";
 
-alias "+ng" "+showscores; net_graphheight 35; cl_showfps 0; r_cleardecals; r_drawviewmodel 0";
-alias "-ng" "-showscores; net_graphheight 0; cl_showfps 1; r_drawviewmodel 1";
+alias "+ng" "+showscores; net_graph 1; cl_showfps 0; r_cleardecals; r_drawviewmodel 0";
+alias "-ng" "-showscores; net_graph 0; cl_showfps 1; r_drawviewmodel 1";
 bind "ESCAPE" "cancelselect";
-bind "F1" "mp_restartgame 1";
+alias h0 "echo ;echo =========[ 1.rc (config) usage ]=========";
+alias h1 "echo F1 - restart; echo F2 - bot_join_ct; echo F3 - bot_join_t; echo F4 - bot_difficulty; echo F5 - jpeg; echo F6 - training settings;"
+alias h2 "echo n - look@weapon; echo i - voice_loopbak (enable); echo o - reload cfg; echo p - Valve 64 tick (interp changed only in spectator);"
+alias h3 "echo [ - snd_pan: exponent 0.5, weight 0; echo ] - snd_position 90/90; echo \ - snd_mixahead 0.1; echo h - voice_scale--; echo j - volume--; echo k - volume++; echo l - voice_scale++;"
+alias h4 "echo mouse3 - (left/right)hand; echo mouse4 - toggle_voice; echo mouse5 - toggle_loadout;"
+alias hZ "echo ";
+alias helpme "h0;h1;h2;h3;h4;hZ";
+bind "F1" "mp_restartgame 1; helpme";
 bind "F2" "bot_join_team CT";
 bind "F3" "bot_join_team T";
 bindtoggle "F4" "bot_difficulty";
 bind "F5" "jpeg"
-bind "F6" "bind f1 "say ;noclip;say .noclip;sv_cheats 1;sv_showimpacts 1;sv_showimpacts_penetration 1;sv_showimpacts_time 10;sv_infinite_ammo 1;sv_grenade_trajectory 1;sv_grenade_trajectory_thickness 0.5;sv_regeneration_force_on 1;bot_kick all;mp_startmoney 16000;mp_freezetime 0;mp_warmup_end;mp_buy_anywhere 1;mp_autoteambalance 0;mp_limitteams 0;mp_roundtime 60;mp_roundtime_defuse 60;mp_buytime 9999";
+bind "F6" "say ;noclip;say .noclip;sv_cheats 1;sv_showimpacts 1;sv_showimpacts_penetration 1;sv_showimpacts_time 10;sv_infinite_ammo 1;sv_grenade_trajectory 1;sv_grenade_trajectory_thickness 0.5;sv_regeneration_force_on 1;bot_kick all;mp_startmoney 16000;mp_freezetime 0;mp_warmup_end;mp_buy_anywhere 1;mp_autoteambalance 0;mp_limitteams 0;mp_roundtime 60;mp_roundtime_defuse 60;mp_buytime 9999";
 bind "TAB" "+ng"
 bind "capslock" "+voicerecord"; // WIN_KEY or CAPS_LOCK
 bind "SHIFT" "+speed"
@@ -157,10 +164,10 @@ bind "s" "+back";
 bind "d" "+moveright";
 bind "f" "+use";
 bind "g" "use weapon_hegrenade"; // <G>ranata
-bind "h" "incrementvar volume_scale 0 1 -0.1";
+bind "h" "incrementvar voice_scale 0 1 -0.1";
 bind "j" "incrementvar volume 0 1 -0.1";
 bind "k" "incrementvar volume 0 1 0.1";
-bind "l" "incrementvar volume_scale 0 1 0.1";
+bind "l" "incrementvar voice_scale 0 1 0.1";
 bind "z" "radio1";
 bind "x" "radio2";
 bind "c" "radio3";
@@ -184,18 +191,20 @@ bind "KP_PGDN" "slot3";
 bind "KP_ENTER" "buy vest; buy vesthelm";
 bind "KP_DEL" "buy defuser";
 bind "KP_INS" "buymenu";
-bind "uparrow" "autobuy";
-bind "downarrow" "buy awp";
+bind "uparrow" "buy awp";
+bind "downarrow" "buy ssg08";
 bind "leftarrow" "buy nova";
 bind "rightarrow" "buy mag7";
 bind "backspace" "buy p90";
-bind "\" "buy taser";
 bind "ins" "buy bizon";
 bind "del" "buy m4a1; buy ak47";
 bind "Home" "buy mac10; buy mp9";
 bind "End" "buy galilar; buy famas";
 bind "pgup" "buy tec9; buy fiveseven";
 bind "pgdn" "buy revolver; buy deagle";
+bind "<" "hud_scaling 0.5";
+bind ">" "buy taser";
+bind "/" "autobuy";
 
 gameinstructor_enable "0";
 cl_showhelp "0";
