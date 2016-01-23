@@ -202,8 +202,8 @@ bind "Home" "buy mac10; buy mp9";
 bind "End" "buy galilar; buy famas";
 bind "pgup" "buy tec9; buy fiveseven";
 bind "pgdn" "buy revolver; buy deagle";
-bind "<" "hud_scaling 0.5";
-bind ">" "buy taser";
+bind "," "hud_scaling 0.5";
+bind "." "buy taser";
 bind "/" "autobuy";
 
 gameinstructor_enable "0";
