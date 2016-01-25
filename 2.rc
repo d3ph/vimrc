@@ -1,0 +1,29 @@
+// -console -novid
+bind "KP_MINUS" "toggleconsole" // Open Console
+con_enable "1"
+// dota_learn_stats
+// dota_tutorial_start lasthit
+// dota_apm
+// chat_join
+// dota_set_avatar [1-10]
+dota_force_right_click_attack "1"
+dota_disable_range_finder "0"
+dota_player_units_auto_attack "0"
+dota_unit_fly_bonus_height "10"
+dota_ability_quick_cast "1"
+dota_sf_game_end_delay "0"
+// dota_camera_accelerate "50"
+// dota_camera_speed "6500"
+// dota_camera_disable_zoom "1"
+snd_musicvolume "0"
+fps_max "120"
+mat_vsync "0"
+mat_triplebuffered "0"
+cl_interp "0"
+cl_interp_ratio "1"
+cl_smoothtime "0.01"
+// cl_showfps
+//1300 = lvl4 pudge hook, 700 = tower, 1150 = dagger
+alias "+range" "dota_range_display 1025"
+alias "-range" "dota_range_display 0"
+bind "]" "+range"
