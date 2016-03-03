@@ -4,6 +4,11 @@ alshow() {
     allure report open -o "$d";
 }
 
+install_ctags() {
+    # http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+    sudo apt-get install -y exuberant-ctags
+}
+
 install_vimrc_link() {
     if [ ! -h $1 ]; then
         ln -s ~/vimrc/$(basename $1) $1
@@ -49,6 +54,9 @@ setup_bash() {
     install_vimrc_link ~/.vim
     install_vimrc_link ~/.vimrc
     install_vimrc_link ~/.gitconfig
+    install_vimrc_link ~/.tmux.conf
+    install_vimrc_link ~/.sackrc
+    install_vimrc_link ~/.ctags
 }
 
 # force_color_prompt=yes

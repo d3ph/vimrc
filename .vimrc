@@ -355,13 +355,14 @@ imap <C-enter> <Esc>i
 " match Todo /\s\+$/
 
 " Next Tab
-nnoremap <silent> <C-Right> :tabnext<CR>
+nnoremap <silent> <S-Right> :tabnext<CR>
 
 " Previous Tab
-nnoremap <silent> <C-Left> :tabprevious<CR>
+nnoremap <silent> <S-Left> :tabprevious<CR>
 
 " New Tab
-nnoremap <silent> <C-t> :tabnew<CR>
+" dont map C-T, it is for ctags
+nnoremap <silent> <S-T> :tabnew<CR>
 
 function! AwesomeHL()
   highlight flicker guibg=black ctermbg=grey

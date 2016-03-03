@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get install vim-nox
 bashrc=~/.bashrc
 inject_bashrc="source ~/vimrc/$(basename $bashrc)"
 
