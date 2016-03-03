@@ -10,6 +10,32 @@ install_vimrc_link() {
     fi
 }
 
+install_fuck() {
+    cd ~ && wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
+}
+
+install_ag() {
+    sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
+    # brew install automake pkg-config pcre xz
+    cd ~ && git clone https://github.com/ggreer/the_silver_searcher && cd the_silver_searcher && ./build.sh && sudo make install
+    cd ~ && git clone https://github.com/sampson-chen/sack.git && cd sack && chmod +x install_sack.sh && ./install_sack.sh
+}
+
+init_bundle() {
+    read -r -d '' list_of_vim_plugins <<-'EOF'
+https://github.com/rking/ag.vim
+https://github.com/wincent/Command-T
+https://github.com/davidhalter/jedi-vim.git
+https://github.com/nvie/vim-flake8
+https://github.com/tpope/vim-fugitive.git
+EOF
+    if [ -d ~/.vim/bundle ]; then
+        for url in $list_of_vim_plugins; do
+            cd ~/.vim/bundle && git clone --recursive $url
+        done
+    fi
+}
+
 setup_bash() {
     if [ ! -d ~/.bash ]; then
         mkdir ~/.bash
