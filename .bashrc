@@ -1,3 +1,22 @@
+test -x "$(which docker)" && eval $(docker-machine env default)
+DOCKER_EMOJI=🐳
+__active_machine() {
+  if [ -x "$(which docker)" ]; then
+    FORMAT=$1
+    if ACTIVE=$(docker-machine active 2>/dev/null); then
+      STATE=$(docker-machine status $ACTIVE)
+      if [ "$STATE" = "Running" ]; then
+        STATE="+"
+        # IP=$(docker-machine ip $ACTIVE)
+      else
+        STATE="${bakred}${bldwht}${STATE}${txtrst}"
+      fi
+
+      printf "$FORMAT" "$DOCKER_EMOJI" "$ACTIVE" "$STATE"
+    fi
+  fi
+}
+
 alshow() {
     d=$(mktemp -d);
     allure generate -v 1.4.5 -o "$d" "$@";
@@ -11,7 +30,7 @@ install_ctags() {
 
 install_vimrc_link() {
     if [ ! -h $1 ]; then
-        ln -s ~/vimrc/$(basename $1) $1
+        ln -sf ~/vimrc/$(basename $1) $1
     fi
 }
 
@@ -67,8 +86,8 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 if [ -f "${GITAWAREPROMPT}/main.sh" ]; then
     source "${GITAWAREPROMPT}/main.sh"
     if [ $(whoami) == "root" ]; then
-        export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;31m\]\u\[\033[01;32m\]@\h\[$txtrst\]:\[\033[01;34m\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]# "
+        export PS1="\${debian_chroot:+(\$debian_chroot)}\[$bldred\]\u\[$bldgrn\]@\h\[$txtrst\]:\[$bldblu\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]# "
     else
-        export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[$txtrst\]:\[\033[01;34m\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+        export PS1="\$(__active_machine '\[$bldblk\]{%s :%s:\[$txtylw\]%s\[$bldblk\]}\[$txtrst\]')\${debian_chroot:+(\$debian_chroot)}\[$bldgrn\]\u@\h\[$txtrst\]:\[$bldblu\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
     fi
 fi
