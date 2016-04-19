@@ -582,4 +582,4 @@ endfunction
 let g:solarized_termcolors=256
 :autocmd FileType python :iabbrev <buffer> ipython import IPython;IPython.embed()<esc>
 :autocmd FileType python :iabbrev <buffer> pudb import pudb;pudb.set_trace()<esc>
-:autocmd FileType python :iabbrev <buffer> rudb import pudb;pudb.remote.set_trace(term_size=(160, 50))<esc>
+:autocmd FileType python :iabbrev <buffer> rudb from pudb.remote import set_trace;set_trace(term_size=(160, 50))<esc>

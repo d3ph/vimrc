@@ -50,7 +50,7 @@ init_bundle() {
 https://github.com/rking/ag.vim
 https://github.com/wincent/Command-T
 https://github.com/davidhalter/jedi-vim.git
-https://github.com/nvie/vim-flake8
+https://github.com/d3ph/vim-flake8
 https://github.com/tpope/vim-fugitive.git
 EOF
     if [ -d ~/.vim/bundle ]; then
