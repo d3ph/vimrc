@@ -228,7 +228,7 @@ nnoremap <silent> <F10> :Project<CR>
 " nnoremap <silent> <F12> :call Paste_on_off()<CR>
 " set pastetoggle=<F12>
 
-set tags=tags;$HOME/.vim/tags/ "recursively searches directory for 'tags' file
+set tags=tags;$HOME/.vim/tags/;.git/tags;.hg/tags "recursively searches directory for 'tags' file
 
 
 " Plugins maps

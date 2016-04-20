@@ -23,8 +23,14 @@ alshow() {
     allure report open -o "$d";
 }
 
+install_cscope() {
+    # brew install cscope
+    sudo apt-get install -y cscope
+}
+
 install_ctags() {
     # http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+    # brew install ctags
     sudo apt-get install -y exuberant-ctags
 }
 
@@ -35,14 +41,18 @@ install_vimrc_link() {
 }
 
 install_fuck() {
+    # brew install thefuck
     cd ~ && wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
 }
 
 install_ag() {
+    # brew install the_silver_searcher
     sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
     # brew install automake pkg-config pcre xz
-    cd ~ && git clone https://github.com/ggreer/the_silver_searcher && cd the_silver_searcher && ./build.sh && sudo make install
-    cd ~ && git clone https://github.com/sampson-chen/sack.git && cd sack && chmod +x install_sack.sh && ./install_sack.sh
+    # cd ~ && git clone https://github.com/ggreer/the_silver_searcher && cd the_silver_searcher && ./build.sh && sudo make install
+    # cd ~ && git clone https://github.com/sampson-chen/sack.git && cd sack && chmod +x install_sack.sh && ./install_sack.sh
+    ln -sf /usr/local/bin ~/bin
+    cd ~ && git clone https://github.com/sampson-chen/sack.git && cp sack/sag /usr/local/bin/sag && cp sack/sack /usr/local/bin/sack
 }
 
 init_bundle() {
@@ -73,6 +83,7 @@ setup_bash() {
     install_vimrc_link ~/.vim
     install_vimrc_link ~/.vimrc
     install_vimrc_link ~/.gitconfig
+    install_vimrc_link ~/.gitignore_global
     install_vimrc_link ~/.tmux.conf
     install_vimrc_link ~/.sackrc
     install_vimrc_link ~/.ctags
