@@ -40,6 +40,12 @@ install_vimrc_link() {
     fi
 }
 
+install_myrepos() {
+    # Usage: mr init your repos
+    # brew install myrepos
+    sudo apt-get install myrepos
+}
+
 install_fuck() {
     # brew install thefuck
     cd ~ && wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
@@ -53,6 +59,9 @@ install_ag() {
     # cd ~ && git clone https://github.com/sampson-chen/sack.git && cd sack && chmod +x install_sack.sh && ./install_sack.sh
     ln -sf /usr/local/bin ~/bin
     cd ~ && git clone https://github.com/sampson-chen/sack.git && cp sack/sag /usr/local/bin/sag && cp sack/sack /usr/local/bin/sack
+    # more tools:
+    # * rpl
+    # * cloc
 }
 
 init_bundle() {
@@ -62,6 +71,8 @@ https://github.com/wincent/Command-T
 https://github.com/davidhalter/jedi-vim.git
 https://github.com/d3ph/vim-flake8
 https://github.com/tpope/vim-fugitive.git
+https://github.com/ctrlpvim/ctrlp.vim
+https://github.com/scrooloose/nerdtree
 EOF
     if [ -d ~/.vim/bundle ]; then
         for url in $list_of_vim_plugins; do
@@ -87,7 +98,44 @@ setup_bash() {
     install_vimrc_link ~/.tmux.conf
     install_vimrc_link ~/.sackrc
     install_vimrc_link ~/.ctags
+    test ! -h ~/.mrconfig && cp ~/vimrc/.mrconfig ~/.mrconfig
 }
+
+not_master() {
+    test -x "$(which git)" && test ${git_branch:-(master)} != "(master)"
+}
+
+hard_rebase() {
+    not_master && git fetch && git merge oribin/master master && git rebase --onto master ${TOD:place_here_all_branches_between_current_and_master} ${git_branch//[()]}
+}
+
+merge() {
+    not_master && git fetch && git merge origin/master ${git_branch//[()]}
+}
+
+push() {
+    not_master && git push origin ${git_branch//[()]}
+}
+
+# Show Reverse Dependencies
+deps() {
+    # FIXME: apt-cache rdepends --installed $1 | tail -n +1
+    apt-cache showpkg $1 | perl -lne 'BEGIN{$flag=0};if (/^Reverse Depends:/) {$flag=1} elsif (/^Dependencies:/) {$flag=0} elsif ($flag) {m/\s+([^,]+)/; print $1};' | sort | uniq
+}
+
+# Show Installed Packages
+pkgs() {
+    dpkg -l | cut -f3 -d ' ' | tail -n +6
+}
+
+# Print Associative Arrays
+pp() { for k in $(eval "echo \${!$1[@]}"); do echo $k:$(eval "echo \${$1[\$k]}"); done }
+
+# recursive & depends on blame() & deps()
+reverse_find() { for i in `deps $1`; do { dpkg -l $i 2>/dev/null | tail -n +6; } && let aa[$i]+=1 && test ${aa[$i]} -lt 5 && reverse_find $i; done }
+
+# depends on reverse_find() & pp()
+blame() { unset aa; declare -A aa; reverse_find $1; pp aa; }
 
 # force_color_prompt=yes
 

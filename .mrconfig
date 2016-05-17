@@ -1,0 +1,12 @@
+[DEFAULT]
+lup =
+    git checkout master
+    mr up
+    git checkout -
+
+zup =
+    git checkout master
+    git pull upstream
+    git merge upstream/master master
+    git push origin master
+    git checkout -

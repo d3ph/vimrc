@@ -1,6 +1,7 @@
 [core]
     autocrlf = false
     safecrlf = true
+    editor = vim
     excludesfile = ~/.gitignore_global
 [color]
     diff = auto
@@ -18,3 +19,5 @@
     cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
     tool = fugitive
+[user]
+	email = d3ph@gmail.com
