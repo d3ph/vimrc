@@ -137,6 +137,8 @@ reverse_find() { for i in `deps $1`; do { dpkg -l $i 2>/dev/null | tail -n +6; }
 # depends on reverse_find() & pp()
 blame() { unset aa; declare -A aa; reverse_find $1; pp aa; }
 
+ssh0() { ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$1; }
+
 # force_color_prompt=yes
 
 test -x "$(which thefuck)" && eval "$(thefuck --alias)" || echo "Warning:: fuck not found, install it from github.com/nvbn/thefuck"
