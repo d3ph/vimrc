@@ -139,6 +139,14 @@ blame() { unset aa; declare -A aa; reverse_find $1; pp aa; }
 
 ssh0() { ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$1; }
 
+mime_search() {
+  echo "Not Implemented Yet!" >2
+  # search in browser cache for audio/mpeg
+  # file -b --mime-type ${src}
+  # stat --format '%s' ${src}
+  # dpkg-query --format '${Version}' --show ${pkg}
+}
+
 # force_color_prompt=yes
 
 test -x "$(which thefuck)" && eval "$(thefuck --alias)" || echo "Warning:: fuck not found, install it from github.com/nvbn/thefuck"
