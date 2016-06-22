@@ -68,16 +68,27 @@ init_bundle() {
     read -r -d '' list_of_vim_plugins <<-'EOF'
 https://github.com/rking/ag.vim
 https://github.com/wincent/Command-T
+https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/davidhalter/jedi-vim.git
 https://github.com/d3ph/vim-flake8
 https://github.com/tpope/vim-fugitive.git
-https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/scrooloose/nerdtree
+https://github.com/vim-scripts/taglist-plus.git
+https://github.com/Shougo/vimproc.vim
+https://github.com/Shougo/neocomplete.vim
+https://github.com/Quramy/tsuquyomi.git
+https://github.com/Quramy/vim-js-pretty-template
+https://github.com/leafgarland/typescript-vim.git
 EOF
     if [ -d ~/.vim/bundle ]; then
         for url in $list_of_vim_plugins; do
             cd ~/.vim/bundle && git clone --recursive $url
         done
+        if [ -d ~/.vim/bundle/vimproc.vim ]; then
+            pushd ~/.vim/bundle/vimproc.vim
+            make
+            popd
+        fi
     fi
 }
 
