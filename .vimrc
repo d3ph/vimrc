@@ -36,6 +36,14 @@ if has("gui_running")
     " colo inkpot
 else
     colo wombat256
+    let g:solarized_visibility = "high"
+    let g:solarized_contrast = "high"
+    let g:solarized_termtrans = 1
+    let g:solarized_termcolors = 256
+    colo solarized
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+    " colo molokai
     " colo zenburn
     " colo vividchalk
     " colo distinguished
@@ -137,6 +145,7 @@ set ttyfast         " smoother changes
 set wak=yes         " winaltkeys: menu "TODO: no
 set nostartofline   " don't jump to first character when paging
 set t_Co=256        " set number of colors
+set t_ut=           " https://sunaku.github.io/vim-256color-bce.html
 set wildignore=*.o,*~,*.obj,*.bak,*.exe,*.pyc,*.DS_Store,*.db
 set wildmenu        "wmnu " In cmdmode press 'wc' + show matches
 set wildchar=<Tab>  "wc

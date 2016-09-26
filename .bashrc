@@ -1,7 +1,7 @@
-test -x "$(which docker)" && eval $(docker-machine env default)
+# test -x "$(which docker)" && eval $(docker-machine env default)
 DOCKER_EMOJI=🐳
 __active_machine() {
-  if [ -x "$(which docker)" ]; then
+  if [ -x "$(which docker)" -a -n "$DOCKER_SHELL" ]; then
     FORMAT=$1
     if ACTIVE=$(docker-machine active 2>/dev/null); then
       STATE=$(docker-machine status $ACTIVE)
@@ -21,6 +21,22 @@ alshow() {
     d=$(mktemp -d);
     allure generate -v 1.4.5 -o "$d" "$@";
     allure report open -o "$d";
+}
+
+install_latest_node() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        pushd /tmp
+        curl http://nodejs.org/dist/node-latest.tar.gz | tar x
+        pushd node-v*
+        ./configure --prefix=$VIRTUAL_ENV
+        make install
+        popd
+        rm -rf node-v*
+        popd
+    else
+        echo "You should activate your Virtual Env first"
+        # or use nodeenv pypi pkg
+    fi
 }
 
 install_cscope() {
@@ -79,6 +95,8 @@ https://github.com/Shougo/neocomplete.vim
 https://github.com/Quramy/tsuquyomi.git
 https://github.com/Quramy/vim-js-pretty-template
 https://github.com/leafgarland/typescript-vim.git
+https://github.com/ternjs/tern_for_vim
+https://github.com/altercation/vim-colors-solarized.git
 EOF
     if [ -d ~/.vim/bundle ]; then
         for url in $list_of_vim_plugins; do
@@ -87,6 +105,11 @@ EOF
         if [ -d ~/.vim/bundle/vimproc.vim ]; then
             pushd ~/.vim/bundle/vimproc.vim
             make
+            popd
+        fi
+        if [ -d ~/.vim/bundle/tern_for_vim ]; then
+            pushd ~/.vim/bundle/tern_for_vim
+            npm install
             popd
         fi
     fi
@@ -163,3 +186,26 @@ if [ -f "${GITAWAREPROMPT}/main.sh" ]; then
         export PS1="\$(__active_machine '\[$bldblk\]{%s :%s:\[$txtylw\]%s\[$bldblk\]}\[$txtrst\]')\${debian_chroot:+(\$debian_chroot)}\[$bldgrn\]\u@\h\[$txtrst\]:\[$bldblu\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
     fi
 fi
+
+export HISTCONTROL='ignoredups'
+export HISTIGNORE='&:ls:[bf]g:exit'
+export IGNOREEOF=1
+export CLICOLOR=1
+export GREP_COLOR='1;31'
+export LESS="-ierX"
+export LSCOLORS="Exfxcxdxbxegedabagacad"
+export TERM=xterm-256color
+export LC_CTYPE='en_US.UTF-8'
+
+install_homeshick() {
+    git clone git://github.com/andsens/homeshick.git ${HOME}/.homesick/repos/homeshick
+}
+if [ -f "${HOME}/.homeshick/repos/homeshick/homeshick.sh" ]; then
+    source ${HOME}/.homeshick/repos/homeshick/homeshick.sh
+fi
+
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
