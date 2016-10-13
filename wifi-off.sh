@@ -1,10 +1,12 @@
 #!/bin/bash
-#set -x
-#networksetup -listallnetworkservices
-#networksetup -listnetworkserviceorder
-#networksetup -listallhardwareports
+# set -x
+# launchctl load -S Background ~/Library/LaunchAgents/com.github.WiFiSwitcher.plist
+# networksetup -listallnetworkservices
+# networksetup -listnetworkserviceorder | tail -n +2 | /usr/local/bin/awk -v RS= '{gsub(/\n/," ",$0);print}'
+# networksetup -listallhardwareports
+# networksetup -getairportnetwork
 
-#constructor()
+# constructor()
 {
     TMPFILE=$(mktemp)
     cat <<- 'EOF' > $TMPFILE
@@ -32,10 +34,10 @@
 }
 finish() {
     rm $TMPFILE
-    #set +x
+    # set +x
 }
 ping_service() {
-    { networksetup -getinfo "$1" | gawk -f $TMPFILE | xargs -n1 -I{} ping -c1 {}; } >/dev/null 2>&1
+    { networksetup -getinfo "$1" | /usr/local/bin/gawk -f $TMPFILE | xargs -n1 -I{} ping -c1 {}; } >/dev/null 2>&1
 }
 
 ping_service "USB Ethernet" || ping_service "Display Ethernet" && { networksetup -setairportpower airport off; true; } || networksetup -setairportpower airport on
