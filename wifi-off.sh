@@ -1,4 +1,5 @@
 #!/bin/bash
+# http://apple.stackexchange.com/a/223446
 # set -x
 # launchctl load -S Background ~/Library/LaunchAgents/com.github.WiFiSwitcher.plist
 # networksetup -listallnetworkservices
