@@ -1,0 +1,81 @@
+# brew dnsmasq
+# brew dnscrypt-proxy
+# brew elixir
+# brew gist
+# brew leiningen
+brew aria2
+brew automake
+brew bash-completion
+brew byobu
+brew cloc
+brew cmake
+brew coreutils
+brew cscope
+brew ctags
+brew curl
+brew freetds
+brew freetype
+brew gawk
+brew gcc
+brew git
+brew htop-osx
+brew httpie
+brew imagemagick --with-librsvg
+brew iperf
+brew jpeg
+brew libpng
+brew libxml2
+brew llvm
+brew maven
+brew midnight-commander
+brew mplayer
+brew myrepos
+brew mysql@5.5
+brew ncdu
+brew nginx
+brew nmap
+brew octave
+brew p7zip
+brew pass
+brew patchutils
+brew pcre
+brew perl
+brew postgresql
+brew pstree
+brew pwgen
+brew python
+brew python3
+brew rename
+brew rpl
+brew rsync
+brew the_silver_searcher
+brew thefuck
+brew tldr
+brew tmux
+brew tree
+brew unrar
+brew vim --override-system-vim
+brew w3m
+brew watch
+brew wget
+brew xz
+brew zlib
+brew mas
+
+# cask 'mysqlworkbench'
+# cask 'chromium'
+cask 'arduino'
+cask 'vlc'
+cask 'caffeine'
+cask 'iterm2'
+cask 'virtualbox'
+cask 'vagrant'
+cask 'skype'
+cask 'cord'
+cask 'firefox'
+cask 'sublime'
+cask 'key-codes'
+cask 'seil'
+cask 'karabiner'
+cask 'tunnelbear'
+cask 'xquartz'
