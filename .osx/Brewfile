@@ -1,69 +1,75 @@
-# brew dnsmasq
+brew 'aria2'
+brew 'automake'
+brew 'axel'
+brew 'bash-completion'
+brew 'byobu'
+brew 'cloc'
+brew 'cmake'
+brew 'coreutils'
+brew 'cscope'
+brew 'ctags'
+brew 'curl', args: ['with-libidn']
 # brew dnscrypt-proxy
+# brew dnsmasq
 # brew elixir
+brew 'freetds'
+brew 'freetype'
+brew 'gawk'
+brew 'gcc'
 # brew gist
+brew 'git'
+brew 'htop-osx'
+brew 'httpie'
+brew 'imagemagick', args: ['with-librsvg']
+brew 'iperf'
+brew 'jpeg'
 # brew leiningen
-brew aria2
-brew automake
-brew bash-completion
-brew byobu
-brew cloc
-brew cmake
-brew coreutils
-brew cscope
-brew ctags
-brew curl
-brew freetds
-brew freetype
-brew gawk
-brew gcc
-brew git
-brew htop-osx
-brew httpie
-brew imagemagick --with-librsvg
-brew iperf
-brew jpeg
-brew libpng
-brew libxml2
-brew llvm
-brew maven
-brew midnight-commander
-brew mplayer
-brew myrepos
-brew mysql@5.5
-brew ncdu
-brew nginx
-brew nmap
-brew octave
-brew p7zip
-brew pass
-brew patchutils
-brew pcre
-brew perl
-brew postgresql
-brew pstree
-brew pwgen
-brew python
-brew python3
-brew rename
-brew rpl
-brew rsync
-brew the_silver_searcher
-brew thefuck
-brew tldr
-brew tmux
-brew tree
-brew unrar
-brew vim --override-system-vim
-brew w3m
-brew watch
-brew wget
-brew xz
-brew zlib
-brew mas
+brew 'libpng'
+brew 'libxml2', args: ['with-python']
+brew 'llvm'
+brew 'lua'
+brew 'maven'
+brew 'midnight-commander'
+brew 'mplayer'
+brew 'myrepos'
+brew 'mysql@5.5', restart_service: true
+brew 'ncdu'
+brew 'nginx'
+brew 'nmap'
+brew 'p7zip'
+brew 'pass'
+brew 'patchutils'
+brew 'pcre'
+brew 'perl'
+brew 'postgresql'
+brew 'pstree'
+brew 'pwgen'
+brew 'python'
+brew 'python3'
+brew 'rename'
+brew 'rpl'
+# brew 'rsync'
+brew 'the_silver_searcher'
+brew 'thefuck'
+brew 'tldr'
+brew 'tmux'
+brew 'tree'
+brew 'unrar'
+brew 'vim', args: ['override-system-vim']
+brew 'w3m'
+brew 'watch'
+brew 'wget'
+brew 'xz'
+# tap 'homebrew/dupes'
+# brew 'zlib'
+brew 'mas'
 
 # cask 'mysqlworkbench'
 # cask 'chromium'
+# cask 'alfred'
+# cask 'slack'
+# cask 'idea'
+# cask 'docker'
 cask 'arduino'
 cask 'vlc'
 cask 'caffeine'
@@ -79,3 +85,6 @@ cask 'seil'
 cask 'karabiner'
 cask 'tunnelbear'
 cask 'xquartz'
+cask 'dropbox'
+tap 'homebrew/science'
+brew 'octave'
