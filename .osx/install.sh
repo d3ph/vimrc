@@ -1,7 +1,12 @@
 #!/bin/bash
 xcode-select --install
+# http://ss64.com/osx/syntax-defaults.html
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g WebContinuousSpellCheckingEnabled -bool false
+defaults write -g WebAutomaticDashSubstitutionEnabled -bool false
+defaults write -g WebAutomaticTextReplacementEnabled -bool false
 defaults write com.apple.finder AppleShowAllFiles YES
+defaults write com.google.Keystone.Agent checkInterval 0
 # https://www.java.com/ru/download/mac_download.jsp
 # intellij
 # https://docs.docker.com/docker-for-mac/
