@@ -1,6 +1,7 @@
 #!/bin/bash
 xcode-select --install
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write com.apple.finder AppleShowAllFiles YES
 # https://www.java.com/ru/download/mac_download.jsp
 # intellij
 # https://docs.docker.com/docker-for-mac/
