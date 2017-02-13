@@ -24,6 +24,8 @@ alshow() {
 }
 
 install_latest_node() {
+    # FIXME: brew install node@6
+    # then just add `echo` into end of {VENV}/bin/activate
     if [ -n "$VIRTUAL_ENV" ]; then
         pushd /tmp
         curl http://nodejs.org/dist/node-latest.tar.gz | tar x
@@ -73,30 +75,41 @@ install_ag() {
     # brew install automake pkg-config pcre xz
     # cd ~ && git clone https://github.com/ggreer/the_silver_searcher && cd the_silver_searcher && ./build.sh && sudo make install
     # cd ~ && git clone https://github.com/sampson-chen/sack.git && cd sack && chmod +x install_sack.sh && ./install_sack.sh
-    ln -sf /usr/local/bin ~/bin
-    cd ~ && git clone https://github.com/sampson-chen/sack.git && cp sack/sag /usr/local/bin/sag && cp sack/sack /usr/local/bin/sack
+    # FIXME: next cmd is so danger
+    # ln -sf /usr/local/bin ~/bin
+    # cd ~ && git clone https://github.com/sampson-chen/sack.git && cp sack/sag /usr/local/bin/sag && cp sack/sack /usr/local/bin/sack
     # more tools:
     # * rpl
     # * cloc
 }
 
 init_bundle() {
+    # TODO:
+    # https://github.com/svermeulen/vim-easyclip
+    # https://github.com/tpope/vim-unimpaired
+    # https://github.com/goldfeld/vim-seek
     read -r -d '' list_of_vim_plugins <<-'EOF'
-https://github.com/rking/ag.vim
-https://github.com/wincent/Command-T
-https://github.com/ctrlpvim/ctrlp.vim
-https://github.com/davidhalter/jedi-vim.git
-https://github.com/d3ph/vim-flake8
-https://github.com/tpope/vim-fugitive.git
-https://github.com/scrooloose/nerdtree
-https://github.com/vim-scripts/taglist-plus.git
-https://github.com/Shougo/vimproc.vim
-https://github.com/Shougo/neocomplete.vim
-https://github.com/Quramy/tsuquyomi.git
+https://github.com/Quramy/tsuquyomi
 https://github.com/Quramy/vim-js-pretty-template
-https://github.com/leafgarland/typescript-vim.git
+https://github.com/Shougo/neocomplete
+https://github.com/Shougo/vimproc
+https://github.com/altercation/vim-colors-solarized
+https://github.com/ctrlpvim/ctrlp.vim
+https://github.com/d3ph/vim-flake8
+https://github.com/davidhalter/jedi-vim
+https://github.com/leafgarland/typescript-vim
+https://github.com/rking/ag.vim
+https://github.com/scrooloose/nerdtree
 https://github.com/ternjs/tern_for_vim
-https://github.com/altercation/vim-colors-solarized.git
+https://github.com/tpope/vim-abolish
+https://github.com/tpope/vim-commentary
+https://github.com/tpope/vim-dispatch
+https://github.com/tpope/vim-fugitive
+https://github.com/tpope/vim-repeat
+https://github.com/tpope/vim-speeddating
+https://github.com/tpope/vim-surround
+https://github.com/vim-scripts/taglist-plus
+https://github.com/wincent/Command-T
 EOF
     if [ -d ~/.vim/bundle ]; then
         for url in $list_of_vim_plugins; do
@@ -113,6 +126,12 @@ EOF
             popd
         fi
     fi
+}
+
+update_bundle() {
+    for i in ~/.vim/bundle/*; do
+        echo $i && cd $i && git pull --ff-only
+    done
 }
 
 setup_bash() {
@@ -196,6 +215,8 @@ export LESS="-ierX"
 export LSCOLORS="Exfxcxdxbxegedabagacad"
 export TERM=xterm-256color
 export LC_CTYPE='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
 
 install_homeshick() {
     git clone git://github.com/andsens/homeshick.git ${HOME}/.homesick/repos/homeshick

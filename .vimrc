@@ -245,10 +245,10 @@ set tags=tags;$HOME/.vim/tags/;.git/tags;.hg/tags "recursively searches director
 " Project \C (\c no recurse) start wizard (name, path, cd, filter:*)
 
 if has("autocmd")
-  au FileType djangohtml,html,xhtml,xml source ~/.vim/macros/closetag.vim
+  " au FileType djangohtml,html,xhtml,xml source ~/.vim/macros/closetag.vim " because of surround
 
   " code completion
-  " au FileType python setlocal omnifunc=pythoncomplete#Complete
+  " au FileType python setlocal omnifunc=pythoncomplete#Complete " because of jedi vim
   au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   au FileType html setlocal omnifunc=htmlcomplete#CompleteTags
   au FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -256,14 +256,14 @@ if has("autocmd")
   " code indentation
   au FileType perl setlocal noexpandtab
   au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType fbml setlocal filetype=djangohtml
+  " au FileType fbml setlocal filetype=djangohtml
 
   " some extra filetypes
-  au BufNewFile,BufRead *.mustache setfiletype mustache
-  au BufNewFile,BufRead *.mustache setlocal autoindent
-  au BufNewFile,BufRead *.go setfiletype go
-  au BufNewFile,BufRead *.feature setfiletype ruby
-  au BufNewFile,BufRead *.ru setfiletype ruby
+  " au BufNewFile,BufRead *.mustache setfiletype mustache
+  " au BufNewFile,BufRead *.mustache setlocal autoindent
+  " au BufNewFile,BufRead *.go setfiletype go
+  " au BufNewFile,BufRead *.feature setfiletype ruby
+  " au BufNewFile,BufRead *.ru setfiletype ruby
   au BufNewFile,BufRead .vimrc setlocal tabstop=2 shiftwidth=2 softtabstop=2
   au BufNewFile,BufRead Gemfile setfiletype ruby
 endif
@@ -310,8 +310,8 @@ nmap <leader>r :r ~/.vimxfer<CR>
 nmap <leader>a :. w! >>~/.vimxfer<CR>
 "}}}
 
-map <leader>h :call HTMLEncode()<CR>
-map <leader>H :call HTMLDecode()<CR>
+" map <leader>h :call HTMLEncode()<CR>
+" map <leader>H :call HTMLDecode()<CR>
 
 let mapleader = ","
 " use the same symbols as TextMate for tabstops and EOLs
@@ -319,7 +319,7 @@ let mapleader = ","
 set listchars=tab:▸\ ,eol:¬,trail:\ ,precedes:<,extends:> "lcs
 
 " nmap <leader>, :set list!<CR>
-nmap <leader>, :call ToggleColumn()<CR>
+" nmap <leader>, :call ToggleColumn()<CR>
 
 " make block-indent in visual block
 vmap < <gv
@@ -501,7 +501,7 @@ perl << EOF
  $curbuf->Set($pos[0],$encvalue)
 EOF
 endfunction
-
+ 
 function! HTMLDecode()
 perl << EOF
  use HTML::Entities;
@@ -511,7 +511,7 @@ perl << EOF
  $curbuf->Set($pos[0],$encvalue)
 EOF
 endfunction
-
+ 
 function! ToggleColumn()
   ShowMarksToggle
   set number!
