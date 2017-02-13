@@ -43,13 +43,14 @@ $speed = 0
 [System.Boolean] $res = [System.MyWin32]::SystemInfoByRef(0x70, 0, [REF] $speed, 0)
 if ($res -eq $true) {
     Write-Host $speed –foregroundcolor “blue”
-    if ($speed -eq 10 )
-    {
-        $speed = 4
-    }
-    else
-    {
-        $speed = 10
+    [System.Windows.Forms.MessageBox]::Show("Current speed = $speed")
+
+    switch ($speed) 
+    { 
+        6 {$speed = 10}
+        10 {$speed = 14}
+        14 {$speed = 6}
+        default {$speed = 6}
     }
     
     [System.MyWin32]::SystemInfoNonRef(0x71, 0, $speed, 0)
