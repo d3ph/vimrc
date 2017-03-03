@@ -20,4 +20,5 @@
 [merge]
     tool = fugitive
 [user]
+    name = Sergei Voronezhskii
 	email = revan@yandex-team.ru

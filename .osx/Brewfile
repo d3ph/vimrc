@@ -12,7 +12,8 @@ brew 'curl', args: ['with-libidn']
 # brew dnscrypt-proxy
 # brew dnsmasq
 # brew elixir
-brew 'freetds'
+tap 'homebrew/versions'
+brew 'homebrew/versions/freetds091', args: ['with-odbc-wide']
 brew 'freetype'
 brew 'gawk'
 brew 'gcc'
@@ -50,13 +51,14 @@ brew 'python3'
 brew 'rename'
 brew 'rpl'
 # brew 'rsync'
+brew 'socat'
 brew 'the_silver_searcher'
 brew 'thefuck'
 brew 'tldr'
 brew 'tmux'
 brew 'tree'
 brew 'unrar'
-brew 'vim', args: ['override-system-vim', 'with-python']
+brew 'vim', args: ['override-system-vim', 'with-python', 'with-lua']
 brew 'w3m'
 brew 'watch'
 brew 'wget'
@@ -83,8 +85,9 @@ cask 'cord'
 cask 'firefox'
 cask 'sublime-text'
 cask 'key-codes'
-cask 'seil'
-cask 'karabiner'
+# cask 'seil'
+# cask 'karabiner'
+cask 'karabiner-elements'
 cask 'tunnelbear'
 cask 'xquartz'
 cask 'dropbox'

@@ -92,7 +92,7 @@ init_bundle() {
 https://github.com/Quramy/tsuquyomi
 https://github.com/Quramy/vim-js-pretty-template
 https://github.com/Shougo/neocomplete
-https://github.com/Shougo/vimproc
+https://github.com/Shougo/vimproc.vim
 https://github.com/altercation/vim-colors-solarized
 https://github.com/ctrlpvim/ctrlp.vim
 https://github.com/d3ph/vim-flake8
