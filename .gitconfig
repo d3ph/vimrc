@@ -15,6 +15,8 @@
     di = diff --color-words
     in = !git fetch origin && git log ..FETCH_HEAD
     out = !git fetch origin && git log FETCH_HEAD..
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''            %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lag = !"git lg --all"
 [mergetool "fugitive"]
     cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
