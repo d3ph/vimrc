@@ -192,6 +192,11 @@ blame() { unset aa; declare -A aa; reverse_find $1; pp aa; }
 
 ssh0() { ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$1; }
 
+function rcanybar() {
+    echo "$@" '&& (echo -n "exclamation" | nc -4u -w0 localhost 1738 ) || (echo -n "question" | nc -4u -w0 localhost 1738)' > /tmp/__watch
+    watch bash /tmp/__watch
+}
+
 # force_color_prompt=yes
 
 test -x "$(which thefuck)" && eval "$(thefuck --alias)" || echo "Warning:: fuck not found, install it from github.com/nvbn/thefuck"
