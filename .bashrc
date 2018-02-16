@@ -1,3 +1,4 @@
+echo ".bashrc"
 # test -x "$(which docker)" && eval $(docker-machine env default)
 DOCKER_EMOJI=🐳
 __active_machine() {
@@ -204,7 +205,7 @@ test -x "$(which thefuck)" && eval "$(thefuck --alias)" || echo "Warning:: fuck 
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 if [ -f "${GITAWAREPROMPT}/main.sh" ]; then
     source "${GITAWAREPROMPT}/main.sh"
-    if [ $(whoami) == "root" ]; then
+    if [ "$(whoami)" == "root" ]; then
         export PS1="\${debian_chroot:+(\$debian_chroot)}\[$bldred\]\u\[$bldgrn\]@\h\[$txtrst\]:\[$bldblu\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]# "
     else
         export PS1="\$(__active_machine '\[$bldblk\]{%s :%s:\[$txtylw\]%s\[$bldblk\]}\[$txtrst\]')\${debian_chroot:+(\$debian_chroot)}\[$bldgrn\]\u@\h\[$txtrst\]:\[$bldblu\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
