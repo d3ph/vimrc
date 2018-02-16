@@ -1,6 +1,9 @@
 set nocompatible "nocp
 "
 " TODO:
+" https://vimrcfu.com
+" https://statico.github.io/vim3.html
+"
 " ack-grep 'sub\s+get_child_props' nms/trunk/
 " ctags -f tags --recurse --totals --exclude=*.swp --exclude=.hg
 " --exclude='*~' --languages=Perl --langmap=Perl:+.t
@@ -35,7 +38,7 @@ if has("gui_running")
     " colo desert
     " colo inkpot
 else
-    colo wombat256
+    " colo wombat256
     let g:solarized_visibility = "high"
     let g:solarized_contrast = "high"
     let g:solarized_termtrans = 1
@@ -384,6 +387,7 @@ autocmd BufWinEnter * call AwesomeHL()
 set tildeop "top " When on: ~ like operator (dd, yy, cc)
 nmap ~ :%s/\<<c-r>=expand("<cword>")<cr>\>/
 
+set shell=sh
 
 highlight TrailingSpace ctermbg=red guibg=red
 autocmd BufWinEnter * match TrailingSpace /\s\+$\| \+\ze\t/
