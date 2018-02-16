@@ -26,3 +26,14 @@ Input sources:
 IntelliJ IDEA > IdeaVIM
 IntelliJ IDEA > Preferences > Keymap
  + Other: Select next tab shift+cmd+left/right
+
+
+Useful shortcuts:
+ + Cmd+Opt+Esc > Force quit application
+ + Cmd+Shift+G > at Finder menu open file open by path
+
+
+pmset - https://apple.stackexchange.com/a/89096 - sleepfile/swapfile
+
+https://keepass.info/help/v2/setup.html#wine
+https://github.com/jwilm/alacritty
