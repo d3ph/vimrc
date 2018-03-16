@@ -21,6 +21,7 @@ brew doctor
 brew update
 brew upgrade
 brew cleanup
+# brew tap Homebrew/bundle
 brew bundle
 # brew deps pkg
 # brew uses --installed pkg
