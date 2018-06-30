@@ -1,5 +1,7 @@
 look at: github.com/a-x-/apps
 
+keyboard shortcuts: https://en.wikipedia.org/wiki/Table_of_keyboard_shortcuts
+
 
 Karabiner-Elements:
 non_us_backslash > grave_accent_and_tilde

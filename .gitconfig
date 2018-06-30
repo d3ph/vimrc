@@ -24,3 +24,7 @@
 [user]
     name = Sergei Voronezhskii
 	email = revan@yandex-team.ru
+[filter "lfs"]
+	process = git-lfs filter-process --skip
+	smudge = git-lfs smudge --skip %f
+	clean = git-lfs clean %f

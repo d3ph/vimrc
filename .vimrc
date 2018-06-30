@@ -376,6 +376,9 @@ nnoremap <silent> <S-Left> :tabprevious<CR>
 " dont map C-T, it is for ctags
 nnoremap <silent> <S-T> :tabnew<CR>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 function! AwesomeHL()
   highlight flicker guibg=black ctermbg=grey
   " au CursorMoved <buffer> exe 'match flicker /\V\<'.escape(expand('<cword>'), '/').'\>/'
