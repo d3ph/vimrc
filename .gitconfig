@@ -22,5 +22,12 @@
 [merge]
     tool = fugitive
 [user]
-    name = Sergei Voronezhskii
-	email = revan@yandex-team.ru
+	name = Sergei Voronezhskii
+    email = sergw@tarantool.org
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.mail.ru
+    smtpUser = sergw@tarantool.org
+    smtpServerPort = 587
+    to = tarantool-patches@freelists.org
+    suppresscc = self

@@ -86,6 +86,8 @@ install_ag() {
 
 init_bundle() {
     # TODO:
+    # mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    # curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     # https://github.com/svermeulen/vim-easyclip
     # https://github.com/tpope/vim-unimpaired
     # https://github.com/goldfeld/vim-seek
